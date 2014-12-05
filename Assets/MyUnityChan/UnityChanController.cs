@@ -13,7 +13,6 @@ public class UnityChanController : MonoBehaviour
 	{
 		this.animator = GetComponent<Animator> ();
 		this.speedId = Animator.StringToHash ("speed");
-				Debug.Log ("speed=" + this.speedId);
 	}
 
 	void Update()
