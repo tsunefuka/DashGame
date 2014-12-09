@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Score : MonoBehaviour
+public class Life : MonoBehaviour
 {
 	public GameObject manager;
 
@@ -13,9 +13,9 @@ public class Score : MonoBehaviour
 		this.myManager = this.manager.GetComponent<Manager> ();
 		this.myLabel = this.gameObject.GetComponent<UILabel> ();
 	}
-
+	
 	void Update ()
 	{
-		this.myLabel.text = this.myManager.getScore ().ToString ();
+		this.myLabel.text = this.myManager.getLife ().ToString ();
 	}
 }

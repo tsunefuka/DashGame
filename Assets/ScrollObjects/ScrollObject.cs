@@ -7,21 +7,23 @@ public class ScrollObject : MonoBehaviour
 	public GameObject manager;
 
 	protected Vector3 intial_position;
+	protected Manager myManager;
 
 	void Start ()
 	{
 		this.intial_position = this.transform.position;
+		this.myManager = this.manager.GetComponent<Manager> ();
 	}
 
 	void Update ()
 	{
 		// 向かってくる処理
-		float speed = 2.0f * this.manager.GetComponent<Manager> ().getSpeed ();
+		float speed = 2.0f * this.myManager.getSpeed ();
 		this.transform.position = this.intial_position + this.transform.forward * speed * Time.time;
 	}
 
 	void OnTriggerEnter (Collider collider)
 	{
-				Debug.Log ("hit object");
+		// Override in subclass
 	}
 }

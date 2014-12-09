@@ -28,4 +28,9 @@ public class Manager : MonoBehaviour
 	{
 		this.remain_life = Mathf.Max (this.remain_life - damage, 0);
 	}
+
+	public int getLife()
+	{
+		return this.remain_life;
+	}
 }

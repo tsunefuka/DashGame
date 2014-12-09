@@ -7,7 +7,6 @@ public class ScrollWall : ScrollObject
 
 	void OnTriggerEnter (Collider collider)
 	{
-		this.manager.GetComponent<Manager> ().damage (this.damage);
-		Debug.Log("hit wall");
+		this.myManager.damage (this.damage);
 	}
 }
