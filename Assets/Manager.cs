@@ -19,6 +19,11 @@ public class Manager : MonoBehaviour
 		this.earned_score += score;
 	}
 
+	public float getScore()
+	{
+		return this.earned_score;
+	}
+
 	public void damage(int damage)
 	{
 		this.remain_life = Mathf.Max (this.remain_life - damage, 0);

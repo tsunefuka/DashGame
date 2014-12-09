@@ -8,6 +8,6 @@ public class ScrollItem : ScrollObject
 	void OnTriggerEnter (Collider collider)
 	{
 		this.manager.GetComponent<Manager> ().addScore (this.score);
-		Debug.Log("hit item");
+		Destroy (this.gameObject);
 	}
 }
