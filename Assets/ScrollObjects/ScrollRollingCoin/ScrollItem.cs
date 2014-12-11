@@ -5,9 +5,8 @@ public class ScrollItem : ScrollObject
 {
 	public int score = 1;
 
-	void OnTriggerEnter (Collider collider)
+	public int getScore ()
 	{
-		this.myManager.addScore (this.score);
-		Destroy (this.gameObject);
+		return this.score;
 	}
 }

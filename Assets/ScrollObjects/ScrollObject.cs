@@ -21,9 +21,4 @@ public class ScrollObject : MonoBehaviour
 		float speed = 2.0f * this.myManager.getSpeed ();
 		this.transform.position = this.intial_position + this.transform.forward * speed * Time.time;
 	}
-
-	void OnTriggerEnter (Collider collider)
-	{
-		// Override in subclass
-	}
 }

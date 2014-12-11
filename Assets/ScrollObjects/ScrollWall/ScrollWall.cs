@@ -5,8 +5,8 @@ public class ScrollWall : ScrollObject
 {
 	public int damage = 1;
 
-	void OnTriggerEnter (Collider collider)
+	public int getDamage ()
 	{
-		this.myManager.damage (this.damage);
+		return this.damage;
 	}
 }
