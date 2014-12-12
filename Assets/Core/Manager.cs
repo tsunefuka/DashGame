@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Manager : MonoBehaviour
 {
+	const int NUM_LINE = 3;
+	const int FLIP_WIDTH = 1;
+
 	public float gameSpeed = 1.0f;
 
 	protected float scrollSpeed = 1.0f;
@@ -12,6 +15,16 @@ public class Manager : MonoBehaviour
 	void Start ()
 	{
 		Time.timeScale = this.gameSpeed;
+	}
+
+	public int getNumLine ()
+	{
+		return NUM_LINE;
+	}
+
+	public int getFlipWidth ()
+	{
+		return FLIP_WIDTH;
 	}
 	
 	public float getScrollSpeed()

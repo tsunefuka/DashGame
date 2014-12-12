@@ -6,9 +6,6 @@ public class ThreeLineController : MonoBehaviour
 {
 	private const float INTERVAL_INPUT = 10.0f;
 
-	public int numLine = 3;
-	public int flipWidth = 1;
-
 	protected Animator animator;
 	protected Manager manager;
 	protected int nowLine = 2;
@@ -45,16 +42,16 @@ public class ThreeLineController : MonoBehaviour
 		if (this.nowLine > 1)
 		{
 			this.nowLine--;
-			this.transform.position += Vector3.forward * (-1) * this.flipWidth;
+			this.transform.position += Vector3.forward * (-1) * this.manager.getFlipWidth ();
 		}
 	}
 
 	public void MoveLeft ()
 	{
-		if (this.nowLine < this.numLine)
+		if (this.nowLine < this.manager.getNumLine ())
 		{
 			this.nowLine++;
-			this.transform.position += Vector3.forward * this.flipWidth;
+			this.transform.position += Vector3.forward * this.manager.getFlipWidth ();
 		}
 	}
 
