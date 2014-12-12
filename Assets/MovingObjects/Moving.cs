@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 // プレイヤーに向かってくる障害物・アイテムの親クラス
@@ -17,7 +17,7 @@ public class Moving : MonoBehaviour
 	void Update ()
 	{
 		// 向かってくる処理
-		float speed = 2.0f * this.manager.getSpeed ();
+		float speed = 2.0f * this.manager.getScrollSpeed ();
 		this.transform.position = this.intial_position + this.transform.forward * speed * this.getTimeFromSpawned ();
 	}
 

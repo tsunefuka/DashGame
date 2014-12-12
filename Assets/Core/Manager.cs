@@ -3,15 +3,20 @@ using System.Collections;
 
 public class Manager : MonoBehaviour
 {
-	public float speed = 0.5f;
+	public float gameSpeed = 1.0f;
 
+	protected float scrollSpeed = 1.0f;
 	protected int earned_score = 0;
-
 	protected int remain_life = 10;
-	
-	public float getSpeed()
+
+	void Start ()
 	{
-		return this.speed;
+		Time.timeScale = this.gameSpeed;
+	}
+	
+	public float getScrollSpeed()
+	{
+		return this.scrollSpeed;
 	}
 
 	public void addScore(int score)
