@@ -3,19 +3,17 @@ using System.Collections;
 
 public class Score : MonoBehaviour
 {
-	public GameObject manager;
-
-	private Manager myManager;
+	private Manager manager;
 	private UILabel myLabel;
 
 	void Start ()
 	{
-		this.myManager = this.manager.GetComponent<Manager> ();
+		this.manager = (GameObject.Find("Manager")).GetComponent<Manager> ();
 		this.myLabel = this.gameObject.GetComponent<UILabel> ();
 	}
 
 	void Update ()
 	{
-		this.myLabel.text = this.myManager.getScore ().ToString ();
+		this.myLabel.text = this.manager.getScore ().ToString ();
 	}
 }

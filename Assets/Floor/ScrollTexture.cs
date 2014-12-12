@@ -3,7 +3,12 @@ using System.Collections;
 
 public class ScrollTexture : MonoBehaviour
 {
-	public GameObject manager;
+	protected Manager manager;
+
+	void Start ()
+	{
+		this.manager = (GameObject.Find("Manager")).GetComponent<Manager> ();
+	}
 
 	void Update ()
 	{

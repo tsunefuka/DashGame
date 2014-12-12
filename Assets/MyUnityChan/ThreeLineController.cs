@@ -6,18 +6,17 @@ public class ThreeLineController : MonoBehaviour
 {
 	private const float INTERVAL_INPUT = 10.0f;
 
-	public GameObject manager;
 	public int numLine = 3;
 	public int flipWidth = 1;
 
 	protected Animator animator;
-	protected Manager myManager;
+	protected Manager manager;
 	protected int nowLine = 2;
 
 	void Start ()
 	{
 		this.animator = this.GetComponent<Animator> ();
-		this.myManager = this.manager.GetComponent<Manager> ();
+		this.manager = (GameObject.Find("Manager")).GetComponent<Manager> ();
 	}
 
 	void Update ()
@@ -76,12 +75,12 @@ public class ThreeLineController : MonoBehaviour
 
 	protected void HitWall (Wall wall)
 	{
-		this.myManager.damage (wall.getDamage ());
+		this.manager.damage (wall.getDamage ());
 		this.animator.SetTrigger ("damage");
 	}
 
 	protected void CaptureCoin (Coin coin)
 	{
-		this.myManager.addScore (coin.getScore ());
+		this.manager.addScore (coin.getScore ());
 	}
 }
