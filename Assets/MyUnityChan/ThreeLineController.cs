@@ -61,12 +61,12 @@ public class ThreeLineController : MonoBehaviour
 		switch (layerName)
 		{
 		case "Coin":
-			ScrollItem scrollItem = collider.gameObject.GetComponent<ScrollItem> ();
+			Coin scrollItem = collider.gameObject.GetComponent<Coin> ();
 			this.myManager.addScore (scrollItem.getScore ());
 			Destroy (collider.gameObject);
 			break;
 		case "Wall":
-			ScrollWall scrollWall = collider.gameObject.GetComponent<ScrollWall> ();
+			Wall scrollWall = collider.gameObject.GetComponent<Wall> ();
 			this.myManager.damage (scrollWall.getDamage ());
 			break;
 		}

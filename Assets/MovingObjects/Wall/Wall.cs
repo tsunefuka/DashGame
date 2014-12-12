@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class ScrollWall : ScrollObject
+public class Wall : MonoBehaviour
 {
 	public int damage = 1;
 

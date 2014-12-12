@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScrollItem : ScrollObject
+public class Coin : MonoBehaviour
 {
 	public int score = 1;
 

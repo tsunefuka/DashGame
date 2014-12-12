@@ -2,7 +2,7 @@
 using System.Collections;
 
 // プレイヤーに向かってくる障害物・アイテムの親クラス
-public class ScrollObject : MonoBehaviour
+public class Moving : MonoBehaviour
 {
 	public GameObject manager;
 
