@@ -59,26 +59,29 @@ public class ThreeLineController : MonoBehaviour
 		}
 	}
 
-	public void damage (int damage)
-	{
-		this.myManager.damage (damage);
-		this.animator.SetTrigger ("damage");
-	}
-
 	void OnTriggerEnter (Collider collider)
 	{
 		string layerName = LayerMask.LayerToName(collider.gameObject.layer);
 		switch (layerName)
 		{
 		case "Coin":
-			Coin scrollItem = collider.gameObject.GetComponent<Coin> ();
-			this.myManager.addScore (scrollItem.getScore ());
+			this.CaptureCoin (collider.gameObject.GetComponent<Coin> ());
 			Destroy (collider.gameObject);
 			break;
 		case "Wall":
-			Wall scrollWall = collider.gameObject.GetComponent<Wall> ();
-			this.damage (scrollWall.getDamage ());
+			this.HitWall (collider.gameObject.GetComponent<Wall> ());
 			break;
 		}
+	}
+
+	protected void HitWall (Wall wall)
+	{
+		this.myManager.damage (wall.getDamage ());
+		this.animator.SetTrigger ("damage");
+	}
+
+	protected void CaptureCoin (Coin coin)
+	{
+		this.myManager.addScore (coin.getScore ());
 	}
 }
