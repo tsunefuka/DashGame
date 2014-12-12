@@ -16,7 +16,7 @@ public class ThreeLineController : MonoBehaviour
 
 	void Start ()
 	{
-		this.animator = GetComponent<Animator> ();
+		this.animator = this.GetComponent<Animator> ();
 		this.myManager = this.manager.GetComponent<Manager> ();
 	}
 
@@ -27,13 +27,17 @@ public class ThreeLineController : MonoBehaviour
 
 	private void Move()
 	{
-		if (Input.GetButtonDown("right"))
-		{
-			this.MoveRight ();
-		} 
-		else if (Input.GetButtonDown("left"))
-		{
-			this.MoveLeft ();
+		AnimatorStateInfo state = this.animator.GetCurrentAnimatorStateInfo (0);
+		if (state.IsName("RUN"))
+	    {
+			if (Input.GetButtonDown("right"))
+			{
+				this.MoveRight ();
+			} 
+			else if (Input.GetButtonDown("left"))
+			{
+				this.MoveLeft ();
+			}
 		}
 	}
 
@@ -55,6 +59,12 @@ public class ThreeLineController : MonoBehaviour
 		}
 	}
 
+	public void damage (int damage)
+	{
+		this.myManager.damage (damage);
+		this.animator.SetTrigger ("damage");
+	}
+
 	void OnTriggerEnter (Collider collider)
 	{
 		string layerName = LayerMask.LayerToName(collider.gameObject.layer);
@@ -67,7 +77,7 @@ public class ThreeLineController : MonoBehaviour
 			break;
 		case "Wall":
 			Wall scrollWall = collider.gameObject.GetComponent<Wall> ();
-			this.myManager.damage (scrollWall.getDamage ());
+			this.damage (scrollWall.getDamage ());
 			break;
 		}
 	}
