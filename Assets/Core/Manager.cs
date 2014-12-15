@@ -7,14 +7,27 @@ public class Manager : MonoBehaviour
 	const int FLIP_WIDTH = 1;
 
 	public float gameSpeed = 1.0f;
+	public GameObject character;
 
 	protected float scrollSpeed = 1.0f;
 	protected int earned_score = 0;
 	protected int remain_life = 10;
+	protected KeyboardInputController myKeyboardInputController;
 
 	void Start ()
 	{
 		Time.timeScale = this.gameSpeed;
+		this.myKeyboardInputController = new KeyboardInputController(this);
+	}
+
+	void Update ()
+	{
+		this.myKeyboardInputController.InputKeyboard ();
+	}
+
+	public ThreeLineController GetCharacter ()
+	{
+		return this.character.GetComponent<ThreeLineController> ();
 	}
 
 	public int getNumLine ()

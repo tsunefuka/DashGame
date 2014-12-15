@@ -16,30 +16,15 @@ public class ThreeLineController : MonoBehaviour
 		this.manager = (GameObject.Find("Manager")).GetComponent<Manager> ();
 	}
 
-	void Update ()
-	{
-		this.Move ();
-	}
-
-	private void Move()
+	protected bool canMove ()
 	{
 		AnimatorStateInfo state = this.animator.GetCurrentAnimatorStateInfo (0);
-		if (state.IsName("RUN"))
-	    {
-			if (Input.GetButtonDown("right"))
-			{
-				this.MoveRight ();
-			} 
-			else if (Input.GetButtonDown("left"))
-			{
-				this.MoveLeft ();
-			}
-		}
+		return state.IsName("RUN");
 	}
 
 	public void MoveRight ()
 	{
-		if (this.nowLine > 1)
+		if (this.canMove () && this.nowLine > 1)
 		{
 			this.nowLine--;
 			this.transform.position += Vector3.forward * (-1) * this.manager.getFlipWidth ();
@@ -48,7 +33,7 @@ public class ThreeLineController : MonoBehaviour
 
 	public void MoveLeft ()
 	{
-		if (this.nowLine < this.manager.getNumLine ())
+		if (this.canMove () && this.nowLine < this.manager.getNumLine ())
 		{
 			this.nowLine++;
 			this.transform.position += Vector3.forward * this.manager.getFlipWidth ();
