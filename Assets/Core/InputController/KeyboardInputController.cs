@@ -20,6 +20,10 @@ public class KeyboardInputController
 		{
 			this.manager.GetCharacter ().MoveLeft ();
 		}
+		else if (Input.GetButtonDown("Jump"))
+		{
+			this.manager.GetCharacter ().Jump ();
+		}
 	}
 	
 }

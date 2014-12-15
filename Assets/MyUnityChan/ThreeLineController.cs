@@ -40,6 +40,14 @@ public class ThreeLineController : MonoBehaviour
 		}
 	}
 
+	public void Jump ()
+	{
+		if (this.canMove ())
+		{
+			this.animator.SetTrigger ("jump");
+		}
+	}
+
 	void OnTriggerEnter (Collider collider)
 	{
 		string layerName = LayerMask.LayerToName(collider.gameObject.layer);
