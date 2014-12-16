@@ -24,4 +24,9 @@ public class ButtonInputController : MonoBehaviour
 	{
 		this.manager.GetCharacter ().MoveLeft ();
 	}
+
+	public void GameBackTitle ()
+	{
+		this.manager.GameBackTitle ();
+	}
 }

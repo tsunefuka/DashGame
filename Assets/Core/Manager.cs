@@ -15,18 +15,17 @@ public class Manager : MonoBehaviour
 
 	public GameObject titleContainer;
 	public GameObject playContainer;
+	public GameObject endContainer;
 
 	protected int gameStatus;
-	protected float scrollSpeed = 1.0f;
-	protected int earned_score = 0;
-	protected int remain_life = 10;
+	protected float scrollSpeed;
+	protected int earned_score;
+	protected int remain_life;
 	protected KeyboardInputController myKeyboardInputController;
 
 	void Start ()
 	{
-		this.gameStatus = GAME_STATUS_TITLE;
-		Time.timeScale = this.gameSpeed;
-		this.myKeyboardInputController = new KeyboardInputController(this);
+		this.GameInitialize ();
 	}
 
 	void Update ()
@@ -43,11 +42,35 @@ public class Manager : MonoBehaviour
 		}
 	}
 
+	protected void GameInitialize ()
+	{
+		this.gameStatus = GAME_STATUS_TITLE;
+		this.scrollSpeed = 1.0f;
+		this.earned_score = 0;
+		this.remain_life = 10;
+		this.titleContainer.SetActive (true);
+		this.playContainer.SetActive (false);
+		this.endContainer.SetActive (false);
+		Time.timeScale = this.gameSpeed;
+		this.myKeyboardInputController = new KeyboardInputController(this);
+		this.GetCharacter ().Dash ();
+	}
 	public void GameStart ()
 	{
+		this.gameStatus = GAME_STATUS_PLAY;
 		this.titleContainer.SetActive (false);
 		this.playContainer.SetActive (true);
-		this.gameStatus = GAME_STATUS_PLAY;
+	}
+	public void GameOver ()
+	{
+		this.gameStatus = GAME_STATUS_END;
+		this.playContainer.SetActive (false);
+		this.endContainer.SetActive (true);
+		this.GetCharacter ().Lose ();
+	}
+	public void GameBackTitle ()
+	{
+		this.GameInitialize ();
 	}
 
 	public bool isGameStatusTitle ()
@@ -96,6 +119,10 @@ public class Manager : MonoBehaviour
 	public void damage(int damage)
 	{
 		this.remain_life = Mathf.Max (this.remain_life - damage, 0);
+		if (this.remain_life == 0)
+		{
+			this.GameOver ();
+		}
 	}
 
 	public int getLife()

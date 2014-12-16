@@ -10,7 +10,7 @@ public class ThreeLineController : MonoBehaviour
 	protected Manager manager;
 	protected int nowLine = 2;
 
-	void Start ()
+	void Awake ()
 	{
 		this.animator = this.GetComponent<Animator> ();
 		this.manager = (GameObject.Find("Manager")).GetComponent<Manager> ();
@@ -20,6 +20,11 @@ public class ThreeLineController : MonoBehaviour
 	{
 		AnimatorStateInfo state = this.animator.GetCurrentAnimatorStateInfo (0);
 		return state.IsName("RUN");
+	}
+
+	public void Dash ()
+	{
+		this.animator.SetBool ("is_lose", false);
 	}
 
 	public void MoveRight ()
@@ -46,6 +51,11 @@ public class ThreeLineController : MonoBehaviour
 		{
 			this.animator.SetTrigger ("jump");
 		}
+	}
+
+	public void Lose ()
+	{
+		this.animator.SetBool ("is_lose", true);
 	}
 
 	void OnTriggerEnter (Collider collider)

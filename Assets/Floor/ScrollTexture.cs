@@ -12,9 +12,12 @@ public class ScrollTexture : MonoBehaviour
 
 	void Update ()
 	{
-		float speed = this.manager.GetComponent<Manager> ().getScrollSpeed ();
-		float y = Mathf.Repeat (Time.time * speed, 1);
-		Vector2 offset = new Vector2 (0, -1 * y);
-		renderer.sharedMaterial.SetTextureOffset ("_MainTex", offset);
+		if (this.manager.isGameStatusTitle () || this.manager.isGameStatusPlay ())
+		{
+			float speed = this.manager.GetComponent<Manager> ().getScrollSpeed ();
+			float y = Mathf.Repeat (Time.time * speed, 1);
+			Vector2 offset = new Vector2 (0, -1 * y);
+			renderer.sharedMaterial.SetTextureOffset ("_MainTex", offset);
+		}
 	}
 }
