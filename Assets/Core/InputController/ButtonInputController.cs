@@ -25,6 +25,11 @@ public class ButtonInputController : MonoBehaviour
 		this.manager.GetCharacter ().MoveLeft ();
 	}
 
+	public void Jump ()
+	{
+		this.manager.GetCharacter ().Jump ();
+	}
+
 	public void GameBackTitle ()
 	{
 		this.manager.GameBackTitle ();
