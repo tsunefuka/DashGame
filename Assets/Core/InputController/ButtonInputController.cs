@@ -10,6 +10,11 @@ public class ButtonInputController : MonoBehaviour
 		this.manager = (GameObject.Find ("Manager") as GameObject).GetComponent<Manager> ();
 	}
 
+	public void GameStart ()
+	{
+		this.manager.GameStart ();
+	}
+
 	public void MoveRight ()
 	{
 		this.manager.GetCharacter ().MoveRight ();

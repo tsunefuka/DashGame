@@ -22,8 +22,10 @@ public class MovingObjectGenerator : MonoBehaviour
 	{
 		while (true)
 		{
-			this.GenerateObject ();
-
+			if (this.manager.isGameStatusPlay ())
+			{
+				this.GenerateObject ();
+			}
 			yield return new WaitForSeconds (this.spanSecond);
 		}
 	}
